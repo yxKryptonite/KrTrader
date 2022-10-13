@@ -1,0 +1,11 @@
+# Path: config/stock.yaml
+type: stock
+model: lstm
+window_size: 10
+batch_size: 32
+epochs: 100
+learning_rate: 0.001
+dropout: 0.2
+hidden_size: 256
+num_layers: 2
+bidirectional: True

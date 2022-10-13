@@ -2,19 +2,23 @@ import pandas as pd
 import pandas_datareader as dr
 import numpy as np
 import torch
-import models
+from models.lstm import LSTMStrategy
+from data.dataset import StockDataset
 
 # Load data
 data = dr.data.get_data_yahoo('AAPL', start='2010-01-01', end='2020-01-01')
-data = data[['Close']]
-data = data.values
-data = data.astype('float32')
-data = data.reshape(-1, 1)
-# data = data / data.max(axis=0)
-# data = data.tolist()
-# data = pd.DataFrame(data)
+data = data['Close']
+data = data.values # (T,)
+dataset = StockDataset(data, 10)
 
 # Load model
 
 if __name__ == "__main__":
-    print(type(data))
+    strategy = LSTMStrategy()
+    strategy.eval()
+    x, y = dataset[0]
+    x = torch.from_numpy(x).float()
+    x = x.view(1, 10, 1)
+    y_pred = strategy(x)
+    print(y_pred)
+    print(y)
