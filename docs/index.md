@@ -1,5 +1,5 @@
 # KrTrader
-![](/assets/logo.png)
+![](assets/logo.png)
 
 ## Introduction
 
