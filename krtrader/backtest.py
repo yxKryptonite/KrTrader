@@ -6,26 +6,28 @@ from models.lstm import LSTMStrategy
 from data.dataset import StockDataset
 import matplotlib.pyplot as plt
 
-# Load data
-data = dr.data.get_data_yahoo('AAPL', start='2010-01-01', end='2022-10-12') # 2020-2022: inference
-data = data['Close']
-data = data.values # (T,)
-data = torch.from_numpy(data).float().reshape(len(data), 1)
-print(data.shape)
-# dataset = StockDataset(data, 365)
+class BackTest():
+    def __init__(self, cfg):
+        # Load data
+        data = dr.data.get_data_yahoo(cfg["name"], start=cfg["start"], end=cfg["end"]) # 2020-2022: inference
+        data = data[cfg["features"]]
+        data = data.values # (T,)
+        self.data = torch.from_numpy(data).float().reshape(len(data), 1)
+        # print(data.shape)
+        # dataset = StockDataset(data, 365)
 
-# Load model
-strategy = LSTMStrategy()
-strategy.load_state_dict(torch.load('krtrader/ckpt/lstm.pth'))
+        # Load model
+        self.strategy = LSTMStrategy()
+        self.strategy.load_state_dict(torch.load(cfg["model_save_path"]))
 
-if __name__ == "__main__":
-    strategy.eval()
-    x, y = data[:-1, :], data[1:, :]
-    print(x.shape , y.shape)
-    y_pred = strategy(x)
-    # print(y_pred)
-    # print(y)
-    plt.plot(y_pred.detach().numpy(), label='pred')
-    plt.plot(y.detach().numpy(), label='true')
-    plt.legend()
-    plt.show()
+    def run(self):
+        self.strategy.eval()
+        x, y = self.data[:-1, :], self.data[1:, :]
+        print(x.shape , y.shape)
+        y_pred = self.strategy(x)
+        # print(y_pred)
+        # print(y)
+        plt.plot(y_pred.detach().numpy(), label='pred')
+        plt.plot(y.detach().numpy(), label='true')
+        plt.legend()
+        plt.show()

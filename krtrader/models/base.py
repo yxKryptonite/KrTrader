@@ -10,6 +10,9 @@ class BaseStrategy(nn.Module):
     def forward(self, x):
         pass
 
+    def trade(self):
+        pass
+
     def visualize(self):
         pass
 

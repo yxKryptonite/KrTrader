@@ -21,7 +21,9 @@ class StockDataset(Dataset):
         return x, y
 
     def save(self):
-        pass
+        with open("data.csv", "w") as f:
+            writer = csv.writer(f)
+            writer.writerow(self.data)
 
 
 class OptionDataset(Dataset):

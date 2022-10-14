@@ -17,37 +17,44 @@ def get_config():
         cfg = yaml.load(f, Loader=yaml.FullLoader)
     return cfg
 
-cfg = get_config()
+class Trainer():
+    def __init__(self, cfg=None):
+        if cfg is None:
+            cfg = get_config()
+            
+        try:
+            self.device = torch.device(cfg["device"])
+        except:
+            self.device = torch.device("cpu")
 
-try:
-    device = torch.device(cfg["device"])
-except:
-    device = torch.device("cpu")
+        # Load data
+        data = dr.data.get_data_yahoo(cfg["name"], start=cfg["start"], end=cfg["end"])
+        data = data[cfg["features"]]
+        data = data.values # (T,)
 
-# Load data
-data = dr.data.get_data_yahoo(cfg.name, start=cfg.start, end=cfg.end)
-data = data[cfg.features]
-data = data.values # (T,)
-dataset = StockDataset(data, cfg.window_size)
-dataset = dataset.to(device)
+        self.dataset = StockDataset(data, cfg["window_size"])
+        self.dataset = self.dataset.to(self.device)
 
-strategy = LSTMStrategy()
-strategy = strategy.to(device)
-dataloader = DataLoader(dataset, batch_size=cfg.batch_size, shuffle=True)
+        self.strategy = LSTMStrategy()
+        self.strategy = self.strategy.to(self.device)
+        self.dataloader = DataLoader(self.dataset, batch_size=cfg["batch_size"], shuffle=True)
 
-num_epochs = cfg.epochs
-criterion = torch.nn.MSELoss()
-optimizer = torch.optim.Adam(strategy.parameters(), lr=cfg.learning_rate)
+        self.num_epochs = cfg["epochs"]
+        self.criterion = torch.nn.MSELoss()
+        self.optimizer = torch.optim.Adam(self.strategy.parameters(), lr=cfg["learning_rate"])
+        self.save = cfg["save"]
+        self.model_save_path = cfg["model_save_path"]
 
-for epoch in tqdm(range(num_epochs)):
-    for i, (x, y) in enumerate(dataloader):
-        y_pred = strategy(x)
-        loss = criterion(y_pred, y)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-        
-    if (epoch + 1) % 10 == 0:
-        print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
-        if cfg.save:
-            torch.save(strategy.state_dict(), cfg.model_save_path)
+    def train(self):
+        for epoch in tqdm(range(self.num_epochs)):
+            for i, (x, y) in enumerate(self.dataloader):
+                y_pred = self.strategy(x)
+                loss = self.criterion(y_pred, y)
+                self.optimizer.zero_grad()
+                loss.backward()
+                self.optimizer.step()
+                
+            if (epoch + 1) % 10 == 0:
+                print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, self.num_epochs, loss.item()))
+                if self.save:
+                    torch.save(self.strategy.state_dict(), self.model_save_path)
