@@ -1,0 +1,31 @@
+# Path: config/stock_inference.yaml
+
+# Stock configuration
+type: stock
+name: AAPL
+currency: USD
+features: Close
+start: "2020-01-01" # Inference start date
+end: "2022-01-01" # Inference end date
+interval: 1d
+
+# Model & Strategy configuration
+model: LSTMModel
+strategy: SignalStrategy
+
+# Hyperparameters
+window_size: 365
+batch_size: 16
+epochs: 50
+learning_rate: 0.001
+dropout: 0.2
+hidden_size: 50
+num_layers: 1
+bidirectional: False
+
+# Save configuration
+save: True
+model_save_path: "krtrader/ckpt/lstm.pth"
+data_save_path: "krtrader/data/stock.csv"
+
+# Others

@@ -1,1 +1,1 @@
-python krtrader/train.py --yaml config/stock.yaml
+python krtrader/train.py --yaml config/stock_train.yaml

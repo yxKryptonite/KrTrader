@@ -1,7 +1,7 @@
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from models.base import BaseStrategy
+import numpy as np
+import pandas as pd
+from strategies.base import BaseStrategy
 
 class SignalStrategy(BaseStrategy):
     def __init__(self):
@@ -9,7 +9,7 @@ class SignalStrategy(BaseStrategy):
         self.buy = []
         self.sell = []
 
-    def forward(self, now, prev):
+    def __call__(self, now, prev):
         """momentum"""
         return now > prev
 

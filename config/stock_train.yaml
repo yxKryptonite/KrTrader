@@ -1,4 +1,4 @@
-# Path: config/stock.yaml
+# Path: config/stock_train.yaml
 
 # Stock configuration
 type: stock
@@ -6,14 +6,17 @@ name: AAPL
 currency: USD
 features: Close
 start: "2010-01-01"
-end: "2011-01-01"
+end: "2020-01-01"
 interval: 1d
 
-# Model configuration & hyperparameters
-model: lstm
+# Model & Strategy configuration
+model: LSTMModel
+strategy: SignalStrategy
+
+# Hyperparameters
 window_size: 365
 batch_size: 16
-epochs: 100
+epochs: 50
 learning_rate: 0.001
 dropout: 0.2
 hidden_size: 50
@@ -26,4 +29,3 @@ model_save_path: "krtrader/ckpt/lstm.pth"
 data_save_path: "krtrader/data/stock.csv"
 
 # Others
-device: cuda

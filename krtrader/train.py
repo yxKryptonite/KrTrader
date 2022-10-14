@@ -3,15 +3,16 @@ import pandas_datareader as dr
 import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
-from models.lstm import LSTMStrategy
-from data.dataset import StockDataset
+from models.lstm import LSTMModel
+from data.load_data import StockDataset
+from data.read_data import DataReader
 from tqdm import tqdm
 import configargparse
 import yaml
 
 def get_config():
     parser = configargparse.ArgumentParser()
-    parser.add_argument("--yaml", type=str, default="../config/stock.yaml")
+    parser.add_argument("--yaml", type=str, default="config/stock_train.yaml")
     args = parser.parse_args()
     with open(args.yaml, "r") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
@@ -22,22 +23,21 @@ class Trainer():
         if cfg is None:
             cfg = get_config()
             
-        try:
-            self.device = torch.device(cfg["device"])
-        except:
+        if torch.cuda.is_available():
+            self.device = torch.device("cuda")
+        elif torch.backends.mps.is_available():
+            self.device = torch.device("mps")
+        else:
             self.device = torch.device("cpu")
 
         # Load data
-        data = dr.data.get_data_yahoo(cfg["name"], start=cfg["start"], end=cfg["end"])
-        data = data[cfg["features"]]
-        data = data.values # (T,)
+        data_reader = DataReader(cfg)
+        data = data_reader.get_data()
+        dataset = StockDataset(data, cfg["window_size"])
 
-        self.dataset = StockDataset(data, cfg["window_size"])
-        self.dataset = self.dataset.to(self.device)
-
-        self.strategy = LSTMStrategy()
-        self.strategy = self.strategy.to(self.device)
-        self.dataloader = DataLoader(self.dataset, batch_size=cfg["batch_size"], shuffle=True)
+        self.model = eval(cfg["model"])()
+        self.model = self.strategy.to(self.device)
+        self.dataloader = DataLoader(dataset, batch_size=cfg["batch_size"], shuffle=True)
 
         self.num_epochs = cfg["epochs"]
         self.criterion = torch.nn.MSELoss()
@@ -48,7 +48,9 @@ class Trainer():
     def train(self):
         for epoch in tqdm(range(self.num_epochs)):
             for i, (x, y) in enumerate(self.dataloader):
-                y_pred = self.strategy(x)
+                x = x.to(self.device)
+                y = y.to(self.device)
+                y_pred = self.model(x)
                 loss = self.criterion(y_pred, y)
                 self.optimizer.zero_grad()
                 loss.backward()
@@ -57,4 +59,14 @@ class Trainer():
             if (epoch + 1) % 10 == 0:
                 print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, self.num_epochs, loss.item()))
                 if self.save:
-                    torch.save(self.strategy.state_dict(), self.model_save_path)
+                    torch.save(self.model.state_dict(), self.model_save_path)
+
+
+def main():
+    cfg = get_config()
+    trainer = Trainer(cfg)
+    trainer.train()
+
+
+if __name__ == "__main__":
+    main()
