@@ -36,12 +36,12 @@ class Trainer():
         dataset = StockDataset(data, cfg["window_size"])
 
         self.model = eval(cfg["model"])()
-        self.model = self.strategy.to(self.device)
+        self.model = self.model.to(self.device)
         self.dataloader = DataLoader(dataset, batch_size=cfg["batch_size"], shuffle=True)
 
         self.num_epochs = cfg["epochs"]
         self.criterion = torch.nn.MSELoss()
-        self.optimizer = torch.optim.Adam(self.strategy.parameters(), lr=cfg["learning_rate"])
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=cfg["learning_rate"])
         self.save = cfg["save"]
         self.model_save_path = cfg["model_save_path"]
 
@@ -50,6 +50,7 @@ class Trainer():
             for i, (x, y) in enumerate(self.dataloader):
                 x = x.to(self.device)
                 y = y.to(self.device)
+                # x = x.repeat(1, 1, 10)
                 y_pred = self.model(x)
                 loss = self.criterion(y_pred, y)
                 self.optimizer.zero_grad()

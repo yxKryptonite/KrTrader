@@ -1,11 +1,14 @@
 # Path: config/stock_train.yaml
 
+# Training configuration
+run_name: aapl_lstm
+
 # Stock configuration
 type: stock
 name: AAPL
 currency: USD
 features: Close
-start: "2010-01-01"
+start: "1990-01-01"
 end: "2020-01-01"
 interval: 1d
 

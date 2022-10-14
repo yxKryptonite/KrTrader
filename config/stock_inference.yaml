@@ -1,11 +1,14 @@
 # Path: config/stock_inference.yaml
 
+# Inferencing configuration
+run_name: aapl_lstm
+
 # Stock configuration
 type: stock
 name: AAPL
 currency: USD
 features: Close
-start: "2020-01-01" # Inference start date
+start: "1990-01-01" # Inference start date
 end: "2022-01-01" # Inference end date
 interval: 1d
 

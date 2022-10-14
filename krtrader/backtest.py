@@ -23,6 +23,7 @@ class BackTest():
         data_reader = DataReader(cfg)
         data = data_reader.get_data()
         self.data = torch.from_numpy(data).float().reshape(len(data), 1)
+        self.time = data_reader.get_time()
 
         # Load model
         self.model = eval(cfg["model"])()
@@ -32,10 +33,9 @@ class BackTest():
         """Predict future prices"""
         self.model.eval()
         x, y = self.data[:-1, :], self.data[1:, :]
-        print(x.shape , y.shape)
         y_pred = self.model(x)
-        plt.plot(y_pred.detach().numpy(), label='pred')
-        plt.plot(y.detach().numpy(), label='true')
+        plt.plot(self.time, y_pred.detach().numpy(), label='pred')
+        plt.plot(self.time, y.detach().numpy(), label='true')
         plt.legend()
         plt.show()
 
