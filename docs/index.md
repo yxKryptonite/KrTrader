@@ -1,5 +1,5 @@
-# KrTrader: A Toy Quantitative Trading System
-![](../assets/logo.png)
+# KrTrader
+![](/assets/logo.png)
 
 ## Introduction
 
