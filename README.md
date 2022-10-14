@@ -1,3 +1,3 @@
 # KrTrader
 ![](assets/logo.png)
-KrTrader: A toy trader for stock market
+KrTrader: A toy quantitative trading system for stock market.
