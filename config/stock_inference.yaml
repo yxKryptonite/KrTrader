@@ -4,7 +4,7 @@
 run_name: aapl_lstm
 
 # Stock configuration
-type: stock
+dataset: StockDataset
 name: AAPL
 currency: USD
 features: Close
@@ -17,18 +17,21 @@ model: LSTMModel
 strategy: SignalStrategy
 
 # Hyperparameters
+input_size: 1
+hidden_size: 50
+num_layers: 1
+output_size: 1
 window_size: 365
 batch_size: 16
 epochs: 50
 learning_rate: 0.001
 dropout: 0.2
-hidden_size: 50
-num_layers: 1
 bidirectional: False
 
 # Save configuration
-save: True
+save_model: True
+save_data: False
 model_save_path: "krtrader/ckpt/lstm.pth"
-data_save_path: "krtrader/data/stock.csv"
+data_save_path: "krtrader/data/cache/stock.csv"
 
 # Others

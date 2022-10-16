@@ -21,7 +21,9 @@ def get_config():
 class Trainer():
     def __init__(self, cfg=None):
         if cfg is None:
-            cfg = get_config()
+            self.cfg = get_config()
+        else:
+            self.cfg = cfg
             
         if torch.cuda.is_available():
             self.device = torch.device("cuda")
@@ -33,9 +35,9 @@ class Trainer():
         # Load data
         data_reader = DataReader(cfg)
         data = data_reader.get_data()
-        dataset = StockDataset(data, cfg["window_size"])
+        dataset = eval(cfg["dataset"])(data, cfg["window_size"])
 
-        self.model = eval(cfg["model"])()
+        self.model = eval(cfg["model"])(cfg)
         self.model = self.model.to(self.device)
         self.dataloader = DataLoader(dataset, batch_size=cfg["batch_size"], shuffle=True)
 

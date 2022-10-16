@@ -9,9 +9,13 @@ class SignalStrategy(BaseStrategy):
         self.buy = []
         self.sell = []
 
-    def __call__(self, now, prev):
-        """momentum"""
-        return now > prev
+    def __call__(self, x):
+        """
+        momentum
+        x: [T, 1]
+        """
+        return x[-1] > x[-2]
+        
 
     def trade(self, result):
         self.buy.append(result)
