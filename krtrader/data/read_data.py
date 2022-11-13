@@ -7,12 +7,21 @@ import yaml
 
 class DataReader():
     def __init__(self, cfg):
-        self.source_data = dr.data.get_data_yahoo(cfg["name"], start=cfg["start"], end=cfg["end"])
-        self.data = self.source_data[cfg["features"]]
-        self.data = self.data.values # (T,)
+        if type(cfg["name"]) is not list:
+            self.source_data = dr.data.get_data_yahoo(cfg["name"], start=cfg["start"], end=cfg["end"])[cfg["features"]]
+        else:
+            self.source_data = dr.data.get_data_yahoo(cfg["name"][0], start=cfg["start"], end=cfg["end"])[cfg["features"]]
+            for name in cfg["name"][1:]:
+                self.source_data = pd.concat([self.source_data, dr.data.get_data_yahoo(name, start=cfg["start"], end=cfg["end"])[cfg["features"]]], axis=1)
+                
+        self.data = self.source_data.values # (T,)
+        self.name = cfg["name"]
 
     def get_data(self):
         return self.data
+
+    def get_source_data(self):
+        return self.source_data
 
     def get_time(self):
         return self.source_data.index[1:]
@@ -21,7 +30,8 @@ class DataReader():
         if src:
             self.source_data.to_csv(path)
         else:
-            np.save(path, self.data)
+            # np to csv
+            np.save(path, self.data, allow_pickle=False)
 
 
 if __name__ == "__main__":

@@ -1,2 +1,2 @@
 import strategies.base
-import strategies.signal
+import strategies.sig
