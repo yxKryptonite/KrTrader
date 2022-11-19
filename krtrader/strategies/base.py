@@ -39,6 +39,9 @@ class BaseStrategy(object):
         else:
             print(f"{self.time} --> no enough money to buy {name}")
 
+    def trade(self, stock_price):
+        pass
+
     def get_net(self, stock_price):
         # stock_price: dict
         # stock_price = {"name": price}
