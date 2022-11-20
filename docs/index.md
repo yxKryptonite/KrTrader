@@ -2,6 +2,8 @@
 
 ![](assets/logo.png)
 
+[中文文档](Chinese.md)
+
 ## Introduction
 
 A toy quantitative trading system based on Python. (still under development)
@@ -15,7 +17,7 @@ The trading details may be shallow and childish, but I'm dedicated to the develo
 - [x] Backtesting
 - [x] Simulated trading
 - [x] Nice plotting
-- [ ] Maybe some C++ modules
+- [ ] Maybe some crawling of alternative data
 - [ ] To be continued...
 
 ## Installation

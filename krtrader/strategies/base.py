@@ -40,6 +40,7 @@ class BaseStrategy(object):
             print(f"{self.time} --> no enough money to buy {name}")
 
     def trade(self, stock_price):
+        '''depending on specific strategy'''
         pass
 
     def get_net(self, stock_price):
