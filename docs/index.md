@@ -8,7 +8,7 @@
 
 A toy quantitative trading system based on Python. (still under development)
 
-As a sophomore student majoring in CS, I've never learnt any financial knowledge before. So based on my shallow knowledge, I developed this toy trading system within limited stock pool, using simple signal strategies and some machine learning based algorithms (which is my strength).
+As a sophomore student majoring in CS, I've never systematically learnt any financial knowledge before (only with one general course). So based on my shallow knowledge, I developed this toy trading system within limited stock pool, using simple signal strategies and some machine learning based algorithms (which is my strength).
 
 The trading details may be shallow and childish, but I'm dedicated to the development of the `model-wrapped strategies` designing patterns, which is the core of this project.
 
@@ -18,6 +18,7 @@ The trading details may be shallow and childish, but I'm dedicated to the develo
 - [x] Simulated trading
 - [x] Nice plotting
 - [ ] Maybe some crawling of alternative data
+- [ ] Natural language processing
 - [ ] To be continued...
 
 ## Installation
@@ -38,14 +39,14 @@ cd KrTrader
     - Buy & Sell signals
   - Plotting
 - Data analysis
-  - Data reading
+  - Data Crawling
   - Data processing
-  - Plotting
+  - Visualization
 
 ## Usage
 
 - Trade using `strategies`
-- Wrapping your own `strategies` with `models`
+- Wrapping `models` with `strategies`
   - Train models
     ```bash
     python3 krtrader/train.py --yaml config/stock_train.yaml
