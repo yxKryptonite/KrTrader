@@ -58,6 +58,7 @@ cd KrTrader
     python3 krtrader/backtest.py --yaml config/stock_inference.yaml
     ```
 - 其他
+  
   详见 [`tutorials`](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) 。
 
 ## 开源协议

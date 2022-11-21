@@ -2,7 +2,7 @@
 
 ![](assets/logo.png)
 
-[中文文档](Chinese.md)
+[中文](Chinese.md)
 
 ## Introduction
 
@@ -58,6 +58,7 @@ Tip: all the following commands are run in the root directory of the project.
     python3 krtrader/backtest.py --yaml config/stock_inference.yaml
     ```
 - Others
+  
   See [`tutorials`](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) for more details.
 
 ## License
