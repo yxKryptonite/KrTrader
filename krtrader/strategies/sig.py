@@ -37,7 +37,7 @@ if __name__ == "__main__":
     # print(data_reader.name)
     # exit(0)
 
-    strategy = SignalStrategy(10000, data_reader.get_time()[0], 100)
+    strategy = SignalStrategy(cfg)
     trade_duration = 365 * 1
     net_worth = []
     time_series = []

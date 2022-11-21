@@ -16,10 +16,11 @@ YEAR_DAYS = 365
 def get_config():
     parser = configargparse.ArgumentParser()
     parser.add_argument("--yaml", type=str, default="config/stock_inference.yaml")
+    parser.add_argument("--mode", type=str, default="inference")
     args = parser.parse_args()
     with open(args.yaml, "r") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
-    return cfg
+    return cfg, args
 
 
 class BackTest():
@@ -98,10 +99,14 @@ class BackTest():
 
 
 def main():
-    cfg = get_config()
+    cfg, args = get_config()
     backtest = BackTest(cfg)
-    backtest.inference()
-    backtest.plot(mode="inference")
+    if args.mode == "inference":
+        backtest.inference()
+        backtest.plot(mode="inference")
+    elif args.mode == "trade":
+        backtest.run(100000, trade_num=100, num_years=1)
+        backtest.plot(mode="trade")
 
 
 if __name__ == "__main__":
