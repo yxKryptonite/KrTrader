@@ -59,7 +59,7 @@ Tip: all the following commands are run in the root directory of the project.
     ```
 - Others
   
-  See [`tutorials`](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) for more details.
+  See [tutorials](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) for more details.
 
 ## License
 

@@ -4,3 +4,4 @@ import models
 import backtest
 import train
 import trade
+import tutorials

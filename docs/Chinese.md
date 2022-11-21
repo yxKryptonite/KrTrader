@@ -59,7 +59,7 @@ cd KrTrader
     ```
 - 其他
   
-  详见 [`tutorials`](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) 。
+  详见 [tutorials](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) 。
 
 ## 开源协议
 
