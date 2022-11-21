@@ -45,6 +45,8 @@ cd KrTrader
 
 ## 使用
 
+提示：以下所有命令均在项目根目录下运行。
+
 - 使用 `strategies` 交易
 - 用 `strategies` 包装 `models`
   - 训练模型
@@ -55,6 +57,8 @@ cd KrTrader
     ```bash
     python3 krtrader/backtest.py --yaml config/stock_inference.yaml
     ```
+- 其他
+  详见 [`tutorials`](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) 。
 
 ## 开源协议
 

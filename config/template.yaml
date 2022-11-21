@@ -1,0 +1,39 @@
+# Path: config/template.yaml
+
+# Inferencing configuration
+run_name: 
+
+# Stock configuration
+dataset: 
+name: 
+currency: 
+features: 
+start:  # Inference start date
+end:  # Inference end date
+interval:   # 1d by default
+
+# Model & Strategy configuration
+model: 
+strategy: 
+
+# Hyperparameters
+input_size: 
+hidden_size: 
+num_layers: 
+output_size: 
+window_size: 
+batch_size: 
+epochs: 
+learning_rate: 
+dropout: 
+bidirectional: 
+
+# Save configuration
+save_model: 
+save_data: 
+model_save_path: 
+data_save_path: 
+
+# Others
+trade_num: 
+init_asset: 

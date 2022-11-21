@@ -6,3 +6,6 @@ features: Close
 start: "2010-01-01"
 end: "2020-01-01"
 interval: 1d
+
+trade_num: 100
+init_asset: 1000000

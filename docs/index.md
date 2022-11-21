@@ -45,6 +45,8 @@ cd KrTrader
 
 ## Usage
 
+Tip: all the following commands are run in the root directory of the project.
+
 - Trade using `strategies`
 - Wrapping `models` with `strategies`
   - Train models
@@ -55,6 +57,8 @@ cd KrTrader
     ```bash
     python3 krtrader/backtest.py --yaml config/stock_inference.yaml
     ```
+- Others
+  See [`tutorials`](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials) for more details.
 
 ## License
 

@@ -1,7 +1,8 @@
 # Add the parent directory to the path
-import os,sys 
-parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
-sys.path.insert(0, parentdir) 
+import os, sys
+sys.path.append("..")
+# parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) 
+# sys.path.insert(0, parentdir) 
 
 from models.lstm import LSTMModel
 from data.read_data import DataReader

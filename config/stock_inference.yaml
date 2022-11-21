@@ -35,3 +35,5 @@ model_save_path: "krtrader/ckpt/lstm.pth"
 data_save_path: "krtrader/data/cache/stock.csv"
 
 # Others
+trade_num: 100
+init_asset: 1000000

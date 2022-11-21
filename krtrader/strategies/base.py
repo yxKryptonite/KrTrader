@@ -3,10 +3,11 @@ import numpy as np
 import pandas as pd
 
 class BaseStrategy(object):
-    def __init__(self, init_asset, init_time):
+    def __init__(self, cfg):
         super(BaseStrategy, self).__init__()
-        self.asset = init_asset
-        self.time = init_time
+        self.asset = cfg["init_asset"]
+        self.time = cfg["start"]
+        self.trade_num = cfg["trade_num"]
         self.stock = {}
 
     def __call__(self):

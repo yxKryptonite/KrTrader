@@ -1,13 +1,12 @@
 import torch
 import numpy as np
 import pandas as pd
-from base import BaseStrategy
+from strategies.base import BaseStrategy
 
 class SignalStrategy(BaseStrategy):
-    def __init__(self, init_asset, init_time, trade_num):
-        super(SignalStrategy, self).__init__(init_asset, init_time)
+    def __init__(self, cfg):
+        super(SignalStrategy, self).__init__(cfg)
         self.prev_stock_price = {}
-        self.trade_num = trade_num
 
 
     def trade(self, stock_price):
