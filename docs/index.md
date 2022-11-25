@@ -14,7 +14,8 @@ The trading details may be shallow and childish, but I'm dedicated to the develo
 
 ## Features
 - [x] Model-wrapped strategies
-- [x] Simulated trading & Backtesting
+- [x] Machine learning based algorithms
+- [x] Simulated trading & backtesting
 - [x] Unified configuration frameworks
 - [x] Nice plotting
 - [x] Crawling of alternative data
