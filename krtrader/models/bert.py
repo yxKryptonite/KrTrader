@@ -2,9 +2,10 @@ import transformers
 from transformers import BertTokenizer, BertModel, BertForMaskedLM
 import torch
 import torch.nn as nn
+from models.base import BaseModel
 
 
-class BertModel(nn.Module):
+class BertModel(BaseModel):
     def __init__(self):
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
         self.model = BertModel.from_pretrained('bert-base-uncased')

@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
+from models.base import BaseModel
 
 
-class MLP(torch.nn.Module):
+class MLP(BaseModel):
     """An example of how to define a MLP model"""
     def __init__(self, input_dim, output_dim):
         super(MLP, self).__init__()
