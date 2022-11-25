@@ -31,7 +31,7 @@ bidirectional: False
 # Save configuration
 save_model: True
 save_data: False
-model_save_path: "krtrader/ckpt/lstm.pth"
+model_save_path: "../ckpt/lstm.pth"
 data_save_path: "krtrader/data/cache/stock.csv"
 
 # Others

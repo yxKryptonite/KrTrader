@@ -9,8 +9,8 @@ from data.read_data import DataReader
 from strategies.base import BaseStrategy
 
 class LSTMStrategy(BaseStrategy):
-    def __init__(self, init_asset, init_time, trade_num, cfg):
-        super(LSTMStrategy, self).__init__(init_asset, init_time)
+    def __init__(self, cfg):
+        super(LSTMStrategy, self).__init__(cfg)
         self.models = [] # list of LSTMModels
         self.num = 100
         self.thres = 0.1

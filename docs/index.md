@@ -14,11 +14,11 @@ The trading details may be shallow and childish, but I'm dedicated to the develo
 
 ## Features
 - [x] Model-wrapped strategies
-- [x] Backtesting
-- [x] Simulated trading
+- [x] Simulated trading & Backtesting
+- [x] Unified configuration frameworks
 - [x] Nice plotting
-- [ ] Maybe some crawling of alternative data
-- [ ] Natural language processing
+- [x] Crawling of alternative data
+- [x] Natural language processing
 - [ ] To be continued...
 
 ## Installation

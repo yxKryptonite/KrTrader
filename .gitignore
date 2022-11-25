@@ -135,7 +135,3 @@ dmypy.json
 
 # development
 dev.ipynb
-
-*.pth
-*.ckpt
-*.csv
