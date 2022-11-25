@@ -1,0 +1,9 @@
+pyyaml
+pycsv
+transformers
+pandas
+pandas_datareader
+matplotlib
+numpy
+configargparse
+tqdm
