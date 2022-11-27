@@ -37,3 +37,4 @@ data_save_path: "krtrader/data/cache/stock.csv"
 # Others
 trade_num: 100
 init_asset: 1000000
+stamp: stock_train
