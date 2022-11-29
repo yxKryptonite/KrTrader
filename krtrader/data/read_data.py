@@ -8,6 +8,7 @@ import yaml
 class DataReader():
     def __init__(self, cfg):
         if type(cfg["name"]) is not list:
+            # This branch is not used anymore, only for insurance
             self.source_data = dr.data.get_data_yahoo(cfg["name"], start=cfg["start"], end=cfg["end"])[cfg["features"]]
         else:
             self.source_data = dr.data.get_data_yahoo(cfg["name"][0], start=cfg["start"], end=cfg["end"])[cfg["features"]]
