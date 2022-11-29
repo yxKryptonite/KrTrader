@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, yaml
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -6,6 +6,17 @@ import torch
 import numpy as np
 import pandas as pd
 from strategies.base import BaseStrategy
+import configargparse
+
+
+def get_config():
+    parser = configargparse.ArgumentParser()
+    parser.add_argument("--yaml", type=str, default="config/trade0.yaml")
+    args = parser.parse_args()
+    with open(os.path.join(ROOT_DIR, args.yaml), "r") as f:
+        cfg = yaml.load(f, Loader=yaml.FullLoader)
+    return cfg
+
 
 class SignalStrategy(BaseStrategy):
     def __init__(self, cfg):
@@ -28,12 +39,8 @@ class SignalStrategy(BaseStrategy):
 
 
 if __name__ == "__main__":
-    import sys
-    import yaml
-    sys.path.append("..")
     from data.read_data import DataReader
-    with open(os.path.join(ROOT_DIR, "config/trade0.yaml"), "r") as f:
-        cfg = yaml.load(f, Loader=yaml.FullLoader)
+    cfg = get_config()
 
     data_reader = DataReader(cfg)
     data = data_reader.get_source_data()
@@ -53,10 +60,10 @@ if __name__ == "__main__":
             stock_price[data_reader.name[j]] = data_slice[j]
 
         strategy.trade(stock_price)
-        print(f"{strategy.time} net worth: {strategy.get_net(stock_price)} asset: {strategy.asset} stock: {strategy.stock}")
+        strategy.log({"time": strategy.time, "net": strategy.get_net(stock_price), "asset": strategy.asset, "stock": strategy.stock},
+                    mode="net")
+                    
         net_worth.append(strategy.get_net(stock_price))
         time_series.append(strategy.time)
 
-    import matplotlib.pyplot as plt
-    plt.plot(time_series, net_worth)
-    plt.show()
+    strategy.plot(time_series, net_worth)

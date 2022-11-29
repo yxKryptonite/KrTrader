@@ -63,6 +63,9 @@ cd KrTrader
 提示：以下所有命令均在项目根目录下运行。
 
 - 使用 `strategies` 交易
+  ```bash
+  python3 krtrader/strategies/sig.py --yaml config/trade0.yaml
+  ```
 - 用 `strategies` 包装 `models`
   - 训练模型
     ```bash

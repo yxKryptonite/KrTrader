@@ -1,0 +1,1 @@
+python3 krtrader/strategies/sig.py --yaml config/trade0.yaml

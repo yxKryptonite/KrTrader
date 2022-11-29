@@ -38,4 +38,4 @@ data_save_path:
 # Others
 trade_num: # e.g. 100
 init_asset: # e.g. 1000000
-stamp: # this is the logging file name of your backtest, e.g.simulated_trade
+log_stamp: # this is the logging file name of your backtest, e.g.simulated_trade

@@ -63,6 +63,9 @@ cd KrTrader
 Tip: all the following commands are run in the root directory of the project.
 
 - Trade using `strategies`
+  ```bash
+  python3 krtrader/strategies/sig.py --yaml config/trade0.yaml
+  ```
 - Wrapping `models` with `strategies`
   - Train models
     ```bash

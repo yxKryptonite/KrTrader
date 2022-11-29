@@ -18,7 +18,7 @@ def get_config():
     parser = configargparse.ArgumentParser()
     parser.add_argument("--yaml", type=str, default="config/stock_train.yaml")
     args = parser.parse_args()
-    with open(args.yaml, "r") as f:
+    with open(os.path.join(ROOT_DIR, args.yaml), "r") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
     return cfg
 

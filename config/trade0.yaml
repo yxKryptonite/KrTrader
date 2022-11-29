@@ -11,4 +11,4 @@ interval: 1d
 
 trade_num: 100
 init_asset: 1000000
-stamp: simulated_trade
+log_stamp: simulated_trade

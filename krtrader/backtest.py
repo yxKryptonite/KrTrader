@@ -22,9 +22,10 @@ def get_config():
     parser.add_argument("--yaml", type=str, default="config/stock_inference.yaml")
     parser.add_argument("--mode", type=str, default="inference")
     args = parser.parse_args()
-    with open(args.yaml, "r") as f:
+    with open(os.path.join(ROOT_DIR, args.yaml), "r") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
-    return cfg, args
+    cfg["mode"] = args.mode
+    return cfg
 
 
 class BackTest():
@@ -95,20 +96,24 @@ class BackTest():
         if mode == "inference":
             plt.plot(self.time, self.pred.detach().numpy(), label='pred')
             plt.plot(self.time, self.gt.detach().numpy(), label='true')
+            plt.xlabel("Time")
+            plt.ylabel("Price")
             plt.legend()
             plt.show()
         elif mode == "trade":
-            plt.plot(self.time_series, self.net_worth)
+            plt.plot(self.time, self.net_worth)
+            plt.xlabel("Time")
+            plt.ylabel("Net Worth")
             plt.show()
 
 
 def main():
-    cfg, args = get_config()
+    cfg = get_config()
     backtest = BackTest(cfg)
-    if args.mode == "inference":
+    if cfg["mode"] == "inference":
         backtest.inference()
         backtest.plot(mode="inference")
-    elif args.mode == "trade":
+    elif cfg["mode"] == "trade":
         backtest.run(100000, trade_num=100, num_years=1)
         backtest.plot(mode="trade")
 
