@@ -1,3 +1,7 @@
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 import pandas as pd
 import pandas_datareader as dr
 import numpy as np
@@ -44,7 +48,7 @@ class Trainer():
         self.num_epochs = cfg["epochs"]
         self.criterion = torch.nn.MSELoss()
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=cfg["learning_rate"])
-        self.save = cfg["save"]
+        self.save = cfg["save_model"]
         self.model_save_path = cfg["model_save_path"]
 
     def train(self):
@@ -62,7 +66,7 @@ class Trainer():
             if (epoch + 1) % 10 == 0:
                 print('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, self.num_epochs, loss.item()))
                 if self.save:
-                    torch.save(self.model.state_dict(), self.model_save_path)
+                    torch.save(self.model.state_dict(), os.path.join(ROOT_DIR, self.model_save_path))
 
 
 def main():
