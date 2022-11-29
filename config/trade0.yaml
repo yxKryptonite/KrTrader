@@ -1,3 +1,5 @@
+# Trade-only configurations
+
 name: ["AAPL", "BA", "DIS", "GOOG", "GE", "NKE"]
 model: None
 strategy: None

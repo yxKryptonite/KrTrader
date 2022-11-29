@@ -1,22 +1,23 @@
+# FULL TEMPLATE OF ALL CONFIGURATIONS
 # Path: config/template.yaml
 
 # Inferencing configuration
-run_name: 
+run_name: # e.g. aapl_lstm
 
 # Stock configuration
-dataset: 
-name: 
-currency: 
-features: 
+dataset: # e.g. StockDataset
+name: # It is a LIST! e.g. [AAPL]
+currency: # e.g. USD
+features: # e.g. Close
 start:  # Inference start date
 end:  # Inference end date
 interval:   # 1d by default
 
 # Model & Strategy configuration
-model: 
-strategy: 
+model: # e.g. LSTMModel
+strategy: # e.g. SignalStrategy
 
-# Hyperparameters
+# Hyperparameters (you need machine learning foundations to understand these)
 input_size: 
 hidden_size: 
 num_layers: 
@@ -28,13 +29,13 @@ learning_rate:
 dropout: 
 bidirectional: 
 
-# Save configuration
+# Save configuration, enter relative path from KrTrader root directory
 save_model: 
 save_data: 
 model_save_path: 
 data_save_path: 
 
 # Others
-trade_num: 
-init_asset: 
-stamp: 
+trade_num: # e.g. 100
+init_asset: # e.g. 1000000
+stamp: # this is the logging file name of your backtest, e.g.simulated_trade

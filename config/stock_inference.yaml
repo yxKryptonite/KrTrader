@@ -5,7 +5,7 @@ run_name: aapl_lstm
 
 # Stock configuration
 dataset: StockDataset
-name: AAPL
+name: [AAPL]
 currency: USD
 features: Close
 start: "1990-01-01" # Inference start date
