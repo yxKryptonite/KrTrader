@@ -15,6 +15,9 @@ KrTrader: A toy quantitative trading system for stock market.
   ```bash
   pip3 install -r requirements.txt
   ```
+- If you're in mainland China, please get a stable VPN to access data. 
+  
+  (However, since you're seeing this on GitHub, I guess you already have one.)
 
 ## Further
 
