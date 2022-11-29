@@ -8,3 +8,4 @@ numpy
 configargparse
 tqdm
 torchsummary
+selenium
