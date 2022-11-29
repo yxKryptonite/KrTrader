@@ -38,6 +38,10 @@ The trading details may be shallow and childish, but I'm dedicated to the develo
 
 ## Getting Started
 
+First, please refer to [this](https://github.com/yxKryptonite/KrTrader#preparations) for necessary preparations.
+
+Then, you can run the following commands to clone the repository and start your own trading system:
+
 ```bash
 git clone git@github.com:yxKryptonite/KrTrader.git
 cd KrTrader

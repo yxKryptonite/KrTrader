@@ -38,6 +38,10 @@
 
 ## 开始
 
+首先，请参考[这里](https://github.com/yxKryptonite/KrTrader#preparations)进行一些必要的准备工作。
+
+然后运行以下的命令将仓库克隆到本地：
+
 ```bash
 git clone git@github.com:yxKryptonite/KrTrader.git
 cd KrTrader
