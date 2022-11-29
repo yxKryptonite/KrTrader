@@ -1,3 +1,7 @@
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import torch
 import numpy as np
 import pandas as pd
@@ -28,12 +32,12 @@ if __name__ == "__main__":
     import yaml
     sys.path.append("..")
     from data.read_data import DataReader
-    with open("../../config/trade0.yaml", "r") as f:
+    with open(os.path.join(ROOT_DIR, "config/trade0.yaml"), "r") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
 
     data_reader = DataReader(cfg)
     data = data_reader.get_source_data()
-    data_reader.save("cache/data0.csv", src=True)
+    data_reader.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache/data0.csv"), src=True)
     # print(data_reader.name)
     # exit(0)
 

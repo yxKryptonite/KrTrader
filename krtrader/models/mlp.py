@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from models.base import BaseModel
+from torchsummary import summary
 
 
 class MLP(BaseModel):
@@ -28,3 +29,5 @@ if __name__ == "__main__":
     model = MLP(input_dim, output_dim)
     x = torch.randn(1, input_dim)
     print(model(x))
+    print("--- model summary ---")
+    summary(model, (input_dim,))

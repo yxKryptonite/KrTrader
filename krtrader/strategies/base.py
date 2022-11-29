@@ -1,8 +1,13 @@
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import torch
 import numpy as np
 import pandas as pd
 import sys
 import matplotlib.pyplot as plt
+import logging
 from logging import getLogger
 
 
@@ -31,8 +36,9 @@ class BaseStrategy(object):
         pass
 
     def log(self, time, name, num, price, mode="buy", done=True):
-        log_file = open(f"../logs/{self.stamp}.log", "a")
-        sys.stdout = log_file
+        logging.basicConfig(filename = f"{ROOT_DIR}/krtrader/logs/{self.stamp}.log",
+                            filemode = "w",
+                            level = logging.INFO)
         if done:
             if mode == "sell":
                 self.logger.info(f"{time} --> sell {num} {name} at {price}")
@@ -43,9 +49,6 @@ class BaseStrategy(object):
                 self.logger.info(f"{time} --> no {name} stock to sell")
             elif mode == "buy":
                 self.logger.info(f"{time} --> no enough money to buy {name}")
-        
-        sys.stdout = sys.__stdout__
-        log_file.close()
         
 
     def sell(self, name, num, price):
