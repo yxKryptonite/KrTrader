@@ -36,7 +36,7 @@
   👉 基于 [BERT](https://arxiv.org/abs/1810.04805) ，你可以使用自然语言处理技术来提取新闻的特征，以便于预测股票价格。
 - [ ] 其他...
 
-## 开始使用
+## 开始
 
 ```bash
 git clone git@github.com:yxKryptonite/KrTrader.git
