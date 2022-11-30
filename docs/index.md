@@ -38,14 +38,21 @@ The trading details may be primitive or imperfect, but I'm dedicated to the deve
 
 ## Getting Started
 
-First, please refer to [this](https://github.com/yxKryptonite/KrTrader#preparations) for necessary preparations.
-
-Then, you can run the following commands to clone the repository and start your own trading system:
-
 ```bash
 git clone git@github.com:yxKryptonite/KrTrader.git
 cd KrTrader
 ```
+
+## Dependencies
+
+- [Python3](https://www.python.org/downloads/)
+- [pip3](https://pip.pypa.io/en/stable/installation/)
+- [PyTorch](https://pytorch.org/get-started/locally/)
+- Required packages
+  ```bash
+  pip3 install -r requirements.txt
+  ```
+- If you're in mainland China, please get a stable VPN to access data.
 
 ## Architecture
 

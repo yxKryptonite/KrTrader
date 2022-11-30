@@ -38,14 +38,21 @@
 
 ## 开始
 
-首先，请参考[这里](https://github.com/yxKryptonite/KrTrader#preparations)进行一些必要的准备工作。
-
-然后运行以下的命令将仓库克隆到本地：
-
 ```bash
 git clone git@github.com:yxKryptonite/KrTrader.git
 cd KrTrader
 ```
+
+## 依赖
+
+- [Python3](https://www.python.org/downloads/)
+- [pip3](https://pip.pypa.io/en/stable/installation/)
+- [PyTorch](https://pytorch.org/get-started/locally/)
+- 所需库
+  ```bash
+  pip3 install -r requirements.txt
+  ```
+- 请科学上网以获取数据
 
 ## 架构
 
