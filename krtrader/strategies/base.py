@@ -19,8 +19,8 @@ class BaseStrategy(object):
         self.trade_num = cfg["trade_num"]
         self.stock = {}
         self.net_worth = []
-        self.log_stamp = cfg["log_stamp"]
-        self.logger = getLogger(__name__)
+        self.logfile = cfg["logfile"]
+        self.logger = getLogger(cfg["logger"])
         self.logger.setLevel("INFO")
 
     def __call__(self):
@@ -36,7 +36,7 @@ class BaseStrategy(object):
         pass
 
     def log(self, data, mode, done=True):
-        logging.basicConfig(filename = f"{ROOT_DIR}/krtrader/logs/{self.log_stamp}.log",
+        logging.basicConfig(filename = f"{ROOT_DIR}/krtrader/logs/{self.logfile}.log",
                             filemode = "w",
                             level = logging.INFO)
         if mode == "sell":

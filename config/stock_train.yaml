@@ -37,4 +37,5 @@ data_save_path: "krtrader/data/cache/stock.csv"
 # Others
 trade_num: 100
 init_asset: 1000000
-log_stamp: stock_train
+logfile: stock_train
+logger: LSTMStrategy

@@ -11,4 +11,5 @@ interval: 1d
 
 trade_num: 100
 init_asset: 1000000
-log_stamp: simulated_trade
+logfile: simulated_trade
+logger: SignalStrategy
