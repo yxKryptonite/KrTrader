@@ -6,7 +6,7 @@ This directory contains tutorial notebooks for the KrTrader.
 
 1. Make sure you have already installed all the dependencies. See [here](https://github.com/yxKryptonite/KrTrader#dependencies) for details.
 2. Make sure your device can run jupyter notebook. See [here](https://jupyter.org/install) for the installation guide.
-3. Modify the `template.yaml` file in the `KrTrader/config/` directory to match your own settings (there are plenty of comments).
+3. **(Optional)** If you want to add your own settings, modify the `template.yaml` file in the `KrTrader/config/` directory (there are plenty of comments).
 4. Now you can run the tutorials below 👇
 
 - `simple_signal.ipynb`: A tutorial for a simple signal strategy based on stock prices.
