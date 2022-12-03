@@ -92,4 +92,4 @@ cd KrTrader
 
 ## 开源协议
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/yxKryptonite/KrTrader/blob/master/LICENSE)

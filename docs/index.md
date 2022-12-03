@@ -92,4 +92,4 @@ Tip: all the following commands are run in the root directory of the project.
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/yxKryptonite/KrTrader/blob/master/LICENSE)

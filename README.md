@@ -4,7 +4,7 @@
 
 KrTrader: A toy quantitative trading system for stock market.
 
-[Webpage](https://yuxuank.cn/KrTrader/)
+[Welcome to our webpage!](https://yuxuank.cn/KrTrader/)
 
 ## Getting Started
 
@@ -15,9 +15,9 @@ cd KrTrader
 
 ## Dependencies
 
-- [`Python3`](https://www.python.org/downloads/)
-- [`pip3`](https://pip.pypa.io/en/stable/installation/)
-- [`PyTorch`](https://pytorch.org/get-started/locally/)
+- [Python3](https://www.python.org/downloads/)
+- [pip3](https://pip.pypa.io/en/stable/installation/)
+- [PyTorch](https://pytorch.org/get-started/locally/)
 - Required packages
   ```bash
   pip3 install -r requirements.txt
@@ -26,11 +26,9 @@ cd KrTrader
 
 ## Further
 
-[Welcome to the webpage!](https://yuxuank.cn/KrTrader/)
+- [Usage](https://yuxuank.cn/KrTrader/index.html#usage)
 
-## Tutorials
-
-See [our tutorials](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials).
+- [Tutorials](https://github.com/yxKryptonite/KrTrader/tree/master/krtrader/tutorials)
 
 ## License
 
