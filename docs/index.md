@@ -6,9 +6,9 @@
 
 ## Introduction
 
-A toy quantitative trading system based on Python. (still under development)
+A toy quantitative trading system based on Python.
 
-As a sophomore student majoring in CS, I've never systematically learnt any financial knowledge before (except for one general course). So based on my shallow knowledge, I developed this toy trading system within limited stock pool, using simple signal strategies and some machine learning based algorithms (which is my strength).
+As a sophomore student majoring in CS, I've never systematically learnt financial knowledge before (except for one general course). So based on my shallow knowledge, I developed this toy trading system **from scratch** within limited stock pool, using simple signal strategies and some machine learning based algorithms (which is my strength).
 
 The trading details may be primitive or imperfect, but I'm dedicated to the development of the `model-wrapped strategies` designing patterns, which is the core of this project.
 

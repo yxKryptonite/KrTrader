@@ -1,6 +1,6 @@
 # Tutorials
 
-This directory contains tutorial notebooks for the KrTrader.
+This directory contains tutorial notebooks for KrTrader.
 
 ## Before you start
 
