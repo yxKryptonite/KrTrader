@@ -4,6 +4,8 @@
 
 KrTrader: A toy quantitative trading system for stock market.
 
+**《当代量化交易系统的原理与实现》2022秋课程大作业，选题为 “编写交易系统”的题目2**
+
 [Welcome to our webpage!](https://yuxuank.cn/KrTrader/)
 
 ## Getting Started
